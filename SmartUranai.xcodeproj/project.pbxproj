@@ -27,6 +27,9 @@
 		2083225A18D5681E00782CA7 /* SUILoveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083225918D5681E00782CA7 /* SUILoveCell.m */; };
 		2083225D18D5684000782CA7 /* SUIJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083225C18D5684000782CA7 /* SUIJobCell.m */; };
 		2083226018D5684700782CA7 /* SUIMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083225F18D5684700782CA7 /* SUIMoneyCell.m */; };
+		2083226518D5753600782CA7 /* SUIUserStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083226418D5753600782CA7 /* SUIUserStatus.m */; };
+		2083226818D57AD700782CA7 /* SUIUserHoro.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083226718D57AD700782CA7 /* SUIUserHoro.m */; };
+		D2DEBF69A4D74475AE6002E6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3CC80A3FDB543FEA372617A /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,12 @@
 		2083225C18D5684000782CA7 /* SUIJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIJobCell.m; sourceTree = "<group>"; };
 		2083225E18D5684700782CA7 /* SUIMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIMoneyCell.h; sourceTree = "<group>"; };
 		2083225F18D5684700782CA7 /* SUIMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIMoneyCell.m; sourceTree = "<group>"; };
+		2083226318D5753600782CA7 /* SUIUserStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIUserStatus.h; sourceTree = "<group>"; };
+		2083226418D5753600782CA7 /* SUIUserStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIUserStatus.m; sourceTree = "<group>"; };
+		2083226618D57AD700782CA7 /* SUIUserHoro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIUserHoro.h; sourceTree = "<group>"; };
+		2083226718D57AD700782CA7 /* SUIUserHoro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIUserHoro.m; sourceTree = "<group>"; };
+		218219059DC64B9F81CE7844 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		E3CC80A3FDB543FEA372617A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +89,7 @@
 				2083221D18D5615300782CA7 /* CoreGraphics.framework in Frameworks */,
 				2083221F18D5615300782CA7 /* UIKit.framework in Frameworks */,
 				2083221B18D5615300782CA7 /* Foundation.framework in Frameworks */,
+				D2DEBF69A4D74475AE6002E6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +113,7 @@
 				2083223F18D5615300782CA7 /* SmartUranaiTests */,
 				2083221918D5615300782CA7 /* Frameworks */,
 				2083221818D5615300782CA7 /* Products */,
+				218219059DC64B9F81CE7844 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +133,7 @@
 				2083221C18D5615300782CA7 /* CoreGraphics.framework */,
 				2083221E18D5615300782CA7 /* UIKit.framework */,
 				2083223918D5615300782CA7 /* XCTest.framework */,
+				E3CC80A3FDB543FEA372617A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,12 +141,12 @@
 		2083222018D5615300782CA7 /* SmartUranai */ = {
 			isa = PBXGroup;
 			children = (
+				2083226218D5750700782CA7 /* Model */,
+				2083226118D574FE00782CA7 /* ViewController */,
 				2083225118D567DD00782CA7 /* Cell */,
 				2083222918D5615300782CA7 /* SUIAppDelegate.h */,
 				2083222A18D5615300782CA7 /* SUIAppDelegate.m */,
 				2083222C18D5615300782CA7 /* Main.storyboard */,
-				2083222F18D5615300782CA7 /* SUIViewController.h */,
-				2083223018D5615300782CA7 /* SUIViewController.m */,
 				2083224F18D561A500782CA7 /* tokyo.jpg */,
 				2083223218D5615300782CA7 /* Images.xcassets */,
 				2083222118D5615300782CA7 /* Supporting Files */,
@@ -188,6 +200,26 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		2083226118D574FE00782CA7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2083222F18D5615300782CA7 /* SUIViewController.h */,
+				2083223018D5615300782CA7 /* SUIViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		2083226218D5750700782CA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2083226318D5753600782CA7 /* SUIUserStatus.h */,
+				2083226418D5753600782CA7 /* SUIUserStatus.m */,
+				2083226618D57AD700782CA7 /* SUIUserHoro.h */,
+				2083226718D57AD700782CA7 /* SUIUserHoro.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -195,9 +227,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2083224918D5615300782CA7 /* Build configuration list for PBXNativeTarget "SmartUranai" */;
 			buildPhases = (
+				7F11FC744064421196921EEA /* Check Pods Manifest.lock */,
 				2083221318D5615300782CA7 /* Sources */,
 				2083221418D5615300782CA7 /* Frameworks */,
 				2083221518D5615300782CA7 /* Resources */,
+				CE3C19FF393E4F7BBD6474F4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,6 +316,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7F11FC744064421196921EEA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CE3C19FF393E4F7BBD6474F4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2083221318D5615300782CA7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -291,8 +358,10 @@
 				2083222B18D5615300782CA7 /* SUIAppDelegate.m in Sources */,
 				2083226018D5684700782CA7 /* SUIMoneyCell.m in Sources */,
 				2083223118D5615300782CA7 /* SUIViewController.m in Sources */,
+				2083226818D57AD700782CA7 /* SUIUserHoro.m in Sources */,
 				2083225718D5681500782CA7 /* SUIContentCell.m in Sources */,
 				2083222718D5615300782CA7 /* main.m in Sources */,
+				2083226518D5753600782CA7 /* SUIUserStatus.m in Sources */,
 				2083225A18D5681E00782CA7 /* SUILoveCell.m in Sources */,
 				2083225D18D5684000782CA7 /* SUIJobCell.m in Sources */,
 			);
@@ -418,6 +487,7 @@
 		};
 		2083224A18D5615300782CA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 218219059DC64B9F81CE7844 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -431,6 +501,7 @@
 		};
 		2083224B18D5615300782CA7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 218219059DC64B9F81CE7844 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -503,6 +574,7 @@
 				2083224B18D5615300782CA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2083224C18D5615300782CA7 /* Build configuration list for PBXNativeTarget "SmartUranaiTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +583,7 @@
 				2083224E18D5615300782CA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

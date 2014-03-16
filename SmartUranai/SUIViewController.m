@@ -7,6 +7,11 @@
 //
 
 #import "SUIViewController.h"
+#import <AFNetworking/AFNetworking.h>
+
+#import "SUIUserStatus.h"
+#import "SUIUserHoro.h"
+
 
 @interface SUIViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -30,13 +35,34 @@
     };
     
     [self.navigationController setNavigationBarHidden:YES];
+    
+    [self reload];
 }
 
 
 #pragma mark - FetchContent
 
 - (void)reload {
+    // ユーザーの星座情報を取得
+    // TODO: ちゃんと作る
+    SUIUserStatus *status = [SUIUserStatus sampleStatus];
     
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://api.jugemkey.jp/api/horoscope/free" parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSArray *horoList = responseObject[@"horoscope"][@"2014/03/01"];
+             [horoList enumerateObjectsUsingBlock:^(NSDictionary *horo, NSUInteger idx, BOOL *stop) {
+                 // 一致するか
+                 if ([horo[@"sign"] isEqualToString:status.userAst]) {
+                     // title
+                     SUIUserHoro *userHoro = [[SUIUserHoro alloc] initWithHoroDictionary:horo];
+                     NSLog(@"userHoro[%@]", userHoro);
+                 }
+             }];
+             
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 

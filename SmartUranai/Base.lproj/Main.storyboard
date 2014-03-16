@@ -219,6 +219,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GSF-z9-v5M"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="2n4-zv-txS" id="Shg-n4-3LG"/>
                     </connections>
