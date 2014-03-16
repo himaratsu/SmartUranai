@@ -14,10 +14,7 @@
 @implementation SUIAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-    [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    
+{    
     // regist push notification
     [Parse setApplicationId:@"0BpCjAW5zJlc3qLYfgacIOHiohEkGhoGZ3ybYicX"
                   clientKey:@"QBxZ0e8tPm12fvL298cz6yUgy6nJGOKvi1ajxBWu"];
@@ -37,14 +34,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
-}
-
-// Background Fetch
-- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    NSLog(@"bgfetch!");
-    
-    SUIViewController *vc = ((UINavigationController *)self.window.rootViewController).viewControllers[0];
-    [vc reloadContentWithCompletion:completionHandler];
 }
 
 // Silent Push Notification
