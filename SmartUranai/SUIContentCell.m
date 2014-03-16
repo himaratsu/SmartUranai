@@ -8,22 +8,29 @@
 
 #import "SUIContentCell.h"
 
+@interface SUIContentCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
+@end
+
 @implementation SUIContentCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+- (void)setContent:(NSString *)content {
+    if (content == nil) {
+        content = @"";
     }
-    return self;
+    
+    UIFont *font = [UIFont systemFontOfSize:17.0f];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    [paragraphStyle setLineSpacing:4];
+    
+    NSDictionary *attributes = @{ NSFontAttributeName: font, NSParagraphStyleAttributeName: paragraphStyle };
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:content attributes:attributes];
+    
+    [_contentLabel setAttributedText: attributedString];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

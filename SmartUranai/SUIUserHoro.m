@@ -42,4 +42,10 @@
     return self;
 }
 
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"sign:%@ rank:%d total:%d love:%d job:%d money:%d content:%@",
+            _sign, _rank, _total, _love, _job, _money, _content];
+}
+
 @end

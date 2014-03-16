@@ -10,4 +10,8 @@
 
 @interface SUITitleCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *signLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rankLabel;
+
 @end

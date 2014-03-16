@@ -10,4 +10,6 @@
 
 @interface SUIJobCell : UITableViewCell
 
+@property (nonatomic, assign) NSInteger starNum;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface SUIContentCell : UITableViewCell
 
+@property (nonatomic) NSString *content;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface SUIMoneyCell : UITableViewCell
 
+@property (nonatomic, assign) NSInteger starNum;
+
 @end

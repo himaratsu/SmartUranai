@@ -10,4 +10,7 @@
 
 @interface SUILoveCell : UITableViewCell
 
+@property (nonatomic, assign) NSInteger starNum;
+
+
 @end

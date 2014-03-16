@@ -8,22 +8,25 @@
 
 #import "SUILoveCell.h"
 
+@interface SUILoveCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *starLabel;
+
+@end
+
+
 @implementation SUILoveCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+- (void)setStarNum:(NSInteger)starNum {
+    _starNum = starNum;
+    
+    NSMutableString *labelText = [NSMutableString string];
+    for (int i=0; i<_starNum; i++) {
+        [labelText appendString:@"★"];
     }
-    return self;
+    
+    _starLabel.text = labelText;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

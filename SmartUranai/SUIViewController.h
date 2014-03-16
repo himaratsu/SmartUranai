@@ -10,4 +10,6 @@
 
 @interface SUIViewController : UIViewController
 
+- (void)reloadContentWithCompletion:(UIBackgroundFetchResult)completion;
+
 @end
