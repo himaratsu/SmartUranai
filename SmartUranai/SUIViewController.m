@@ -51,6 +51,13 @@
 
 #pragma mark - FetchContent
 
+- (void)reloadContentWithCompletion:(void (^)(UIBackgroundFetchResult))completion {
+    [self reload];
+    
+    // TODO: 分岐
+    completion(UIBackgroundFetchResultNewData);
+}
+
 - (void)reload {
     // ユーザーの星座情報を取得
     // TODO: ちゃんと作る

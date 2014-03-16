@@ -29,6 +29,7 @@
 		2083226018D5684700782CA7 /* SUIMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083225F18D5684700782CA7 /* SUIMoneyCell.m */; };
 		2083226518D5753600782CA7 /* SUIUserStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083226418D5753600782CA7 /* SUIUserStatus.m */; };
 		2083226818D57AD700782CA7 /* SUIUserHoro.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083226718D57AD700782CA7 /* SUIUserHoro.m */; };
+		2083226A18D58FDC00782CA7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083226918D58FDC00782CA7 /* Parse.framework */; };
 		D2DEBF69A4D74475AE6002E6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3CC80A3FDB543FEA372617A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		2083226418D5753600782CA7 /* SUIUserStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIUserStatus.m; sourceTree = "<group>"; };
 		2083226618D57AD700782CA7 /* SUIUserHoro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIUserHoro.h; sourceTree = "<group>"; };
 		2083226718D57AD700782CA7 /* SUIUserHoro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIUserHoro.m; sourceTree = "<group>"; };
+		2083226918D58FDC00782CA7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		218219059DC64B9F81CE7844 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E3CC80A3FDB543FEA372617A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 				2083221F18D5615300782CA7 /* UIKit.framework in Frameworks */,
 				2083221B18D5615300782CA7 /* Foundation.framework in Frameworks */,
 				D2DEBF69A4D74475AE6002E6 /* libPods.a in Frameworks */,
+				2083226A18D58FDC00782CA7 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +137,7 @@
 				2083221E18D5615300782CA7 /* UIKit.framework */,
 				2083223918D5615300782CA7 /* XCTest.framework */,
 				E3CC80A3FDB543FEA372617A /* libPods.a */,
+				2083226918D58FDC00782CA7 /* Parse.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -270,6 +274,13 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = himara2;
 				TargetAttributes = {
+					2083221618D5615300782CA7 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					2083223718D5615300782CA7 = {
 						TestTargetID = 2083221618D5615300782CA7;
 					};
@@ -489,12 +500,30 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 218219059DC64B9F81CE7844 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: RYOSUKE HIRAMATSU (CX83Y44847)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: RYOSUKE HIRAMATSU (CX83Y44847)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/himara2/Documents/objc/SmartUranai,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartUranai/SmartUranai-Prefix.pch";
 				INFOPLIST_FILE = "SmartUranai/SmartUranai-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "694FC3C6-12D6-47EE-A00A-1DD65111D97A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -503,11 +532,26 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 218219059DC64B9F81CE7844 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/himara2/Documents/objc/SmartUranai,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartUranai/SmartUranai-Prefix.pch";
 				INFOPLIST_FILE = "SmartUranai/SmartUranai-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					MobileCoreServices,
+					"-framework",
+					Security,
+					"-framework",
+					SystemConfiguration,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
