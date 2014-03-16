@@ -21,6 +21,12 @@
 		2083223C18D5615300782CA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083221E18D5615300782CA7 /* UIKit.framework */; };
 		2083224418D5615300782CA7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2083224218D5615300782CA7 /* InfoPlist.strings */; };
 		2083224618D5615300782CA7 /* SmartUranaiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083224518D5615300782CA7 /* SmartUranaiTests.m */; };
+		2083225018D561A500782CA7 /* tokyo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2083224F18D561A500782CA7 /* tokyo.jpg */; };
+		2083225418D567ED00782CA7 /* SUITitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083225318D567ED00782CA7 /* SUITitleCell.m */; };
+		2083225718D5681500782CA7 /* SUIContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083225618D5681500782CA7 /* SUIContentCell.m */; };
+		2083225A18D5681E00782CA7 /* SUILoveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083225918D5681E00782CA7 /* SUILoveCell.m */; };
+		2083225D18D5684000782CA7 /* SUIJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083225C18D5684000782CA7 /* SUIJobCell.m */; };
+		2083226018D5684700782CA7 /* SUIMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083225F18D5684700782CA7 /* SUIMoneyCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,17 @@
 		2083224118D5615300782CA7 /* SmartUranaiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartUranaiTests-Info.plist"; sourceTree = "<group>"; };
 		2083224318D5615300782CA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2083224518D5615300782CA7 /* SmartUranaiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartUranaiTests.m; sourceTree = "<group>"; };
+		2083224F18D561A500782CA7 /* tokyo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tokyo.jpg; sourceTree = "<group>"; };
+		2083225218D567ED00782CA7 /* SUITitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUITitleCell.h; sourceTree = "<group>"; };
+		2083225318D567ED00782CA7 /* SUITitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUITitleCell.m; sourceTree = "<group>"; };
+		2083225518D5681500782CA7 /* SUIContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIContentCell.h; sourceTree = "<group>"; };
+		2083225618D5681500782CA7 /* SUIContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIContentCell.m; sourceTree = "<group>"; };
+		2083225818D5681E00782CA7 /* SUILoveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUILoveCell.h; sourceTree = "<group>"; };
+		2083225918D5681E00782CA7 /* SUILoveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUILoveCell.m; sourceTree = "<group>"; };
+		2083225B18D5684000782CA7 /* SUIJobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIJobCell.h; sourceTree = "<group>"; };
+		2083225C18D5684000782CA7 /* SUIJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIJobCell.m; sourceTree = "<group>"; };
+		2083225E18D5684700782CA7 /* SUIMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIMoneyCell.h; sourceTree = "<group>"; };
+		2083225F18D5684700782CA7 /* SUIMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIMoneyCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +129,13 @@
 		2083222018D5615300782CA7 /* SmartUranai */ = {
 			isa = PBXGroup;
 			children = (
+				2083225118D567DD00782CA7 /* Cell */,
 				2083222918D5615300782CA7 /* SUIAppDelegate.h */,
 				2083222A18D5615300782CA7 /* SUIAppDelegate.m */,
 				2083222C18D5615300782CA7 /* Main.storyboard */,
 				2083222F18D5615300782CA7 /* SUIViewController.h */,
 				2083223018D5615300782CA7 /* SUIViewController.m */,
+				2083224F18D561A500782CA7 /* tokyo.jpg */,
 				2083223218D5615300782CA7 /* Images.xcassets */,
 				2083222118D5615300782CA7 /* Supporting Files */,
 			);
@@ -150,6 +169,23 @@
 				2083224218D5615300782CA7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2083225118D567DD00782CA7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2083225218D567ED00782CA7 /* SUITitleCell.h */,
+				2083225318D567ED00782CA7 /* SUITitleCell.m */,
+				2083225518D5681500782CA7 /* SUIContentCell.h */,
+				2083225618D5681500782CA7 /* SUIContentCell.m */,
+				2083225818D5681E00782CA7 /* SUILoveCell.h */,
+				2083225918D5681E00782CA7 /* SUILoveCell.m */,
+				2083225B18D5684000782CA7 /* SUIJobCell.h */,
+				2083225C18D5684000782CA7 /* SUIJobCell.m */,
+				2083225E18D5684700782CA7 /* SUIMoneyCell.h */,
+				2083225F18D5684700782CA7 /* SUIMoneyCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +267,7 @@
 			files = (
 				2083223318D5615300782CA7 /* Images.xcassets in Resources */,
 				2083222518D5615300782CA7 /* InfoPlist.strings in Resources */,
+				2083225018D561A500782CA7 /* tokyo.jpg in Resources */,
 				2083222E18D5615300782CA7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,9 +287,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2083225418D567ED00782CA7 /* SUITitleCell.m in Sources */,
 				2083222B18D5615300782CA7 /* SUIAppDelegate.m in Sources */,
+				2083226018D5684700782CA7 /* SUIMoneyCell.m in Sources */,
 				2083223118D5615300782CA7 /* SUIViewController.m in Sources */,
+				2083225718D5681500782CA7 /* SUIContentCell.m in Sources */,
 				2083222718D5615300782CA7 /* main.m in Sources */,
+				2083225A18D5681E00782CA7 /* SUILoveCell.m in Sources */,
+				2083225D18D5684000782CA7 /* SUIJobCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
