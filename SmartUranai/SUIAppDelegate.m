@@ -48,7 +48,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
     localNotif.timeZone = [NSTimeZone defaultTimeZone];
     
     // 通知メッセージ
-    localNotif.alertBody = [NSString stringWithFormat:@"silent push受け取り!"];
+    localNotif.alertBody = [NSString stringWithFormat:@"占いが更新されました！今日の順位を確認しましょう！"];
     
     // 効果音は標準の効果音を利用する
     [localNotif setSoundName:UILocalNotificationDefaultSoundName];

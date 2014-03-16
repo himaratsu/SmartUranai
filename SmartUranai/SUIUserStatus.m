@@ -7,12 +7,14 @@
 //
 
 #import "SUIUserStatus.h"
+#import "SUIUtil.h"
 
 @implementation SUIUserStatus
 
-- (id)initWithAst:(NSString *)userAst {
+- (id)initWithAst:(NSString *)userAst notifSetting:(NSString *)notifSetting {
     if (self = [super init]) {
         _userAst = userAst;
+        _notifSetting = notifSetting;
     }
     
     return self;
@@ -20,7 +22,23 @@
 
 + (id)sampleStatus {
     // dummy
-    return [[SUIUserStatus alloc] initWithAst:@"牡羊座"];
+    return [[SUIUserStatus alloc] initWithAst:@"牡羊座" notifSetting:@"1位の時のみ受け取る"];
+}
+
+- (NSString *)updateUserAst:(NSInteger)index {
+    _userAst = [SUIUtil signList][index];
+    
+    // TODO: 保存処理
+    
+    return _userAst;
+}
+
+- (NSString *)updateNotifSetting:(NSInteger)index {
+    _notifSetting = [SUIUtil notifSettingList][index];
+    
+    // TODO: 保存処理
+    
+    return _notifSetting;
 }
 
 @end

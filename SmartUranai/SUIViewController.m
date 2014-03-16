@@ -18,11 +18,13 @@
 #import "SUIJobCell.h"
 #import "SUIMoneyCell.h"
 
+#import "SUISettingViewController.h"
 
 @interface SUIViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) SUIUserHoro *myHoro;
+@property (nonatomic) SUIUserStatus *myStatus;
 
 
 @end
@@ -45,7 +47,7 @@
     [self.navigationController setNavigationBarHidden:YES];
     
     // コンテンツを更新
-//    [self reload];
+    [self reload];
 }
 
 
@@ -58,20 +60,31 @@
     completion(UIBackgroundFetchResultNewData);
 }
 
+// 本日の日付を返す
+- (NSString *)todayStr {
+    return @"2014/03/02";
+}
+
 - (void)reload {
+    NSString *todayStr = [self todayStr];
+    
     // ユーザーの星座情報を取得
     // TODO: ちゃんと作る
-    SUIUserStatus *status = [SUIUserStatus sampleStatus];
+    self.myStatus = [SUIUserStatus sampleStatus];
+
+    // リクエストURLを生成
+    NSString *requestUrl = [NSString stringWithFormat:@"http://api.jugemkey.jp/api/horoscope/free/%@", todayStr];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://api.jugemkey.jp/api/horoscope/free" parameters:nil
+    [manager GET:requestUrl parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-             NSArray *horoList = responseObject[@"horoscope"][@"2014/03/01"];
+             NSArray *horoList = responseObject[@"horoscope"][todayStr];
              [horoList enumerateObjectsUsingBlock:^(NSDictionary *horo, NSUInteger idx, BOOL *stop) {
                  // 一致するか
-                 if ([horo[@"sign"] isEqualToString:status.userAst]) {
+                 if ([horo[@"sign"] isEqualToString:_myStatus.userAst]) {
                      // title
                      self.myHoro = [[SUIUserHoro alloc] initWithHoroDictionary:horo];
+                     _myHoro.date = todayStr;
                      NSLog(@"userHoro[%@]", _myHoro);
                  }
              }];
@@ -139,7 +152,7 @@
     if (indexPath.section == 0) {
         cellIdentifier = @"TitleCell";
         SUITitleCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        cell.dateLabel.text = @"03/01";
+        cell.dateLabel.text = _myHoro.date;
         cell.signLabel.text = _myHoro.sign;
         cell.rankLabel.text = [NSString stringWithFormat:@"%d", _myHoro.rank];
         return cell;
@@ -187,6 +200,16 @@
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
+}
+
+
+#pragma mark - Storyboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"Setting"]) {
+        SUISettingViewController *settingVC = (SUISettingViewController *)segue.destinationViewController;
+        settingVC.myStatus = _myStatus;
+    }
 }
 
 @end

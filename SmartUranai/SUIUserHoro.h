@@ -10,6 +10,8 @@
 
 @interface SUIUserHoro : NSObject
 
+@property (nonatomic, strong) NSString *date;
+
 @property (nonatomic, strong) NSString *sign;
 @property (nonatomic, assign) NSInteger rank;
 

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2063409818D5BBB500EF5942 /* SUISettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2063409718D5BBB500EF5942 /* SUISettingViewController.m */; };
+		2063409D18D5C3E200EF5942 /* SUISettingSignCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2063409C18D5C3E200EF5942 /* SUISettingSignCell.m */; };
+		206340A018D5C3F500EF5942 /* SUISettingNotifCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2063409F18D5C3F500EF5942 /* SUISettingNotifCell.m */; };
+		206340A518D5DE3D00EF5942 /* SUIPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 206340A418D5DE3D00EF5942 /* SUIPickerView.m */; };
+		206340A718D5DE4B00EF5942 /* SUIPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 206340A618D5DE4B00EF5942 /* SUIPickerView.xib */; };
+		206340AA18D5E79B00EF5942 /* SUIUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 206340A918D5E79B00EF5942 /* SUIUtil.m */; };
 		2083221B18D5615300782CA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083221A18D5615300782CA7 /* Foundation.framework */; };
 		2083221D18D5615300782CA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083221C18D5615300782CA7 /* CoreGraphics.framework */; };
 		2083221F18D5615300782CA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083221E18D5615300782CA7 /* UIKit.framework */; };
@@ -44,6 +50,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2063409618D5BBB500EF5942 /* SUISettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUISettingViewController.h; sourceTree = "<group>"; };
+		2063409718D5BBB500EF5942 /* SUISettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUISettingViewController.m; sourceTree = "<group>"; };
+		2063409B18D5C3E200EF5942 /* SUISettingSignCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUISettingSignCell.h; sourceTree = "<group>"; };
+		2063409C18D5C3E200EF5942 /* SUISettingSignCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUISettingSignCell.m; sourceTree = "<group>"; };
+		2063409E18D5C3F500EF5942 /* SUISettingNotifCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUISettingNotifCell.h; sourceTree = "<group>"; };
+		2063409F18D5C3F500EF5942 /* SUISettingNotifCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUISettingNotifCell.m; sourceTree = "<group>"; };
+		206340A118D5DBF400EF5942 /* Const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Const.h; sourceTree = "<group>"; };
+		206340A318D5DE3D00EF5942 /* SUIPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIPickerView.h; sourceTree = "<group>"; };
+		206340A418D5DE3D00EF5942 /* SUIPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIPickerView.m; sourceTree = "<group>"; };
+		206340A618D5DE4B00EF5942 /* SUIPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SUIPickerView.xib; sourceTree = "<group>"; };
+		206340A818D5E79B00EF5942 /* SUIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUIUtil.h; sourceTree = "<group>"; };
+		206340A918D5E79B00EF5942 /* SUIUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIUtil.m; sourceTree = "<group>"; };
 		2083221718D5615300782CA7 /* SmartUranai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartUranai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2083221A18D5615300782CA7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2083221C18D5615300782CA7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,6 +127,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2063409918D5C38000EF5942 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2083225218D567ED00782CA7 /* SUITitleCell.h */,
+				2083225318D567ED00782CA7 /* SUITitleCell.m */,
+				2083225518D5681500782CA7 /* SUIContentCell.h */,
+				2083225618D5681500782CA7 /* SUIContentCell.m */,
+				2083225818D5681E00782CA7 /* SUILoveCell.h */,
+				2083225918D5681E00782CA7 /* SUILoveCell.m */,
+				2083225B18D5684000782CA7 /* SUIJobCell.h */,
+				2083225C18D5684000782CA7 /* SUIJobCell.m */,
+				2083225E18D5684700782CA7 /* SUIMoneyCell.h */,
+				2083225F18D5684700782CA7 /* SUIMoneyCell.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		2063409A18D5C39100EF5942 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				2063409B18D5C3E200EF5942 /* SUISettingSignCell.h */,
+				2063409C18D5C3E200EF5942 /* SUISettingSignCell.m */,
+				2063409E18D5C3F500EF5942 /* SUISettingNotifCell.h */,
+				2063409F18D5C3F500EF5942 /* SUISettingNotifCell.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		206340A218D5DE2100EF5942 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2083225118D567DD00782CA7 /* Cell */,
+				206340A318D5DE3D00EF5942 /* SUIPickerView.h */,
+				206340A418D5DE3D00EF5942 /* SUIPickerView.m */,
+				206340A618D5DE4B00EF5942 /* SUIPickerView.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		2083220E18D5615300782CA7 = {
 			isa = PBXGroup;
 			children = (
@@ -145,9 +202,12 @@
 		2083222018D5615300782CA7 /* SmartUranai */ = {
 			isa = PBXGroup;
 			children = (
+				206340A118D5DBF400EF5942 /* Const.h */,
+				206340A818D5E79B00EF5942 /* SUIUtil.h */,
+				206340A918D5E79B00EF5942 /* SUIUtil.m */,
+				206340A218D5DE2100EF5942 /* View */,
 				2083226218D5750700782CA7 /* Model */,
 				2083226118D574FE00782CA7 /* ViewController */,
-				2083225118D567DD00782CA7 /* Cell */,
 				2083222918D5615300782CA7 /* SUIAppDelegate.h */,
 				2083222A18D5615300782CA7 /* SUIAppDelegate.m */,
 				2083222C18D5615300782CA7 /* Main.storyboard */,
@@ -190,16 +250,8 @@
 		2083225118D567DD00782CA7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				2083225218D567ED00782CA7 /* SUITitleCell.h */,
-				2083225318D567ED00782CA7 /* SUITitleCell.m */,
-				2083225518D5681500782CA7 /* SUIContentCell.h */,
-				2083225618D5681500782CA7 /* SUIContentCell.m */,
-				2083225818D5681E00782CA7 /* SUILoveCell.h */,
-				2083225918D5681E00782CA7 /* SUILoveCell.m */,
-				2083225B18D5684000782CA7 /* SUIJobCell.h */,
-				2083225C18D5684000782CA7 /* SUIJobCell.m */,
-				2083225E18D5684700782CA7 /* SUIMoneyCell.h */,
-				2083225F18D5684700782CA7 /* SUIMoneyCell.m */,
+				2063409918D5C38000EF5942 /* Main */,
+				2063409A18D5C39100EF5942 /* Setting */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -209,6 +261,8 @@
 			children = (
 				2083222F18D5615300782CA7 /* SUIViewController.h */,
 				2083223018D5615300782CA7 /* SUIViewController.m */,
+				2063409618D5BBB500EF5942 /* SUISettingViewController.h */,
+				2063409718D5BBB500EF5942 /* SUISettingViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -314,6 +368,7 @@
 				2083222518D5615300782CA7 /* InfoPlist.strings in Resources */,
 				2083225018D561A500782CA7 /* tokyo.jpg in Resources */,
 				2083222E18D5615300782CA7 /* Main.storyboard in Resources */,
+				206340A718D5DE4B00EF5942 /* SUIPickerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,9 +427,14 @@
 				2083226818D57AD700782CA7 /* SUIUserHoro.m in Sources */,
 				2083225718D5681500782CA7 /* SUIContentCell.m in Sources */,
 				2083222718D5615300782CA7 /* main.m in Sources */,
+				206340A018D5C3F500EF5942 /* SUISettingNotifCell.m in Sources */,
+				206340A518D5DE3D00EF5942 /* SUIPickerView.m in Sources */,
 				2083226518D5753600782CA7 /* SUIUserStatus.m in Sources */,
+				2063409818D5BBB500EF5942 /* SUISettingViewController.m in Sources */,
 				2083225A18D5681E00782CA7 /* SUILoveCell.m in Sources */,
+				206340AA18D5E79B00EF5942 /* SUIUtil.m in Sources */,
 				2083225D18D5684000782CA7 /* SUIJobCell.m in Sources */,
+				2063409D18D5C3E200EF5942 /* SUISettingSignCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

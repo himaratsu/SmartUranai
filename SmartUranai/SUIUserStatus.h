@@ -10,10 +10,12 @@
 
 @interface SUIUserStatus : NSObject
 
-@property (nonatomic, strong) NSString* userAst;    // 登録星座
+@property (nonatomic, strong) NSString* userAst;        // 登録星座
+@property (nonatomic, strong) NSString* notifSetting;   // 通知設定
 
 + (id)sampleStatus;
-- (id)initWithAst:(NSString *)userAst;
-
+- (id)initWithAst:(NSString *)userAst notifSetting:(NSString *)notifSetting;
+- (NSString *)updateUserAst:(NSInteger)index;
+- (NSString *)updateNotifSetting:(NSInteger)index;
 
 @end
