@@ -11,7 +11,9 @@
 @interface SUIUtil : NSObject
 
 + (NSArray *)signList;
-+ (NSArray *)notifSettingList;
++ (NSInteger)indexOfSign:(NSString *)sign;
 
++ (NSArray *)notifSettingList;
++ (NSInteger)indexOfNotifSetting:(NSString *)notifSetting;
 
 @end

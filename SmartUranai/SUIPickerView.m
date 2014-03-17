@@ -36,6 +36,8 @@
 #pragma mark - Getter & Setter
 
 - (void)setType:(PICKER_TYPE)type {
+    [_picker selectedRowInComponent:0];
+    
     _type = type;
     
     switch (type) {
@@ -52,6 +54,12 @@
     [_picker reloadAllComponents];
 }
 
+- (void)setInitialIndex:(NSInteger)initialIndex {
+    _initialIndex = initialIndex;
+    [_picker selectRow:_initialIndex inComponent:0 animated:NO];
+    
+    [_picker reloadAllComponents];
+}
 
 #pragma mark - UIPickerViewDelegate
 

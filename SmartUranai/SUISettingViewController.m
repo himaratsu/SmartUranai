@@ -9,6 +9,7 @@
 #import "SUISettingViewController.h"
 #import "SUIPickerView.h"
 #import "SUIUserStatus.h"
+#import "SUIUtil.h"
 
 @interface SUISettingViewController ()
 <UITableViewDataSource, UITableViewDelegate, SUIPickerViewDelegate>
@@ -172,6 +173,7 @@
         _pickerView.hidden = NO;
     }
     _pickerView.type = PICKER_TYPE_SIGN;
+    _pickerView.initialIndex = [SUIUtil indexOfSign:_myStatus.userAst];
 }
 
 - (void)showNotifPicker {
@@ -184,6 +186,7 @@
         _pickerView.hidden = NO;
     }
     _pickerView.type = PICKER_TYPE_PUSH;
+    _pickerView.initialIndex = [SUIUtil indexOfNotifSetting:_myStatus.notifSetting];
 }
 
 
@@ -192,11 +195,13 @@
 - (void)changeValueSubmit:(NSInteger)index type:(PICKER_TYPE)type {
     if (type == PICKER_TYPE_SIGN) {
         [_myStatus updateUserAst:index];
-        [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]withRowAnimation:UITableViewRowAnimationNone];
+        [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationNone];
     }
     else if (type == PICKER_TYPE_PUSH) {
         [_myStatus updateNotifSetting:index];
-        [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]withRowAnimation:UITableViewRowAnimationNone];
+        [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationNone];
     }
     
     _pickerView.hidden = YES;
