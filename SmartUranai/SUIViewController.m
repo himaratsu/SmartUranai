@@ -45,11 +45,14 @@
     };
     
     [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     // コンテンツを更新
     [self reload];
 }
-
 
 #pragma mark - FetchContent
 
@@ -62,7 +65,13 @@
 
 // 本日の日付を返す
 - (NSString *)todayStr {
-    return @"2014/03/02";
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy/MM/dd";
+    
+    NSDate *date = [NSDate date];
+    NSString *formattedDateString = [dateFormatter stringFromDate:date];
+    
+    return formattedDateString;
 }
 
 - (void)reload {
@@ -70,7 +79,8 @@
     
     // ユーザーの星座情報を取得
     // TODO: ちゃんと作る
-    self.myStatus = [SUIUserStatus sampleStatus];
+    self.myStatus = [[SUIUserStatus alloc] init];
+    [_myStatus loadUserStatus];
 
     // リクエストURLを生成
     NSString *requestUrl = [NSString stringWithFormat:@"http://api.jugemkey.jp/api/horoscope/free/%@", todayStr];
@@ -192,6 +202,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     return cell;
 }
+
+
+#pragma mark - IBAction
+
+- (IBAction)shareBtnTouched:(id)sender {
+    
+}
+
 
 
 #pragma mark - Status Bar

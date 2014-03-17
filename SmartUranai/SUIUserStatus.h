@@ -15,6 +15,7 @@
 
 + (id)sampleStatus;
 - (id)initWithAst:(NSString *)userAst notifSetting:(NSString *)notifSetting;
+- (void)loadUserStatus;
 - (NSString *)updateUserAst:(NSInteger)index;
 - (NSString *)updateNotifSetting:(NSInteger)index;
 

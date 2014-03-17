@@ -167,26 +167,38 @@
     if (_pickerView == nil) {
         self.pickerView = [SUIPickerView loadFromIdiomNib];
         _pickerView.myDelegate = self;
+        _pickerView.alpha = 0;
         [self.view addSubview:_pickerView];
     }
     else {
+        _pickerView.alpha = 0;
         _pickerView.hidden = NO;
     }
     _pickerView.type = PICKER_TYPE_SIGN;
     _pickerView.initialIndex = [SUIUtil indexOfSign:_myStatus.userAst];
+    
+    [UIView animateWithDuration:0.2f animations:^{
+        _pickerView.alpha = 1.0;
+    }];
 }
 
 - (void)showNotifPicker {
     if (_pickerView == nil) {
         self.pickerView = [SUIPickerView loadFromIdiomNib];
         _pickerView.myDelegate = self;
+        _pickerView.alpha = 0;
         [self.view addSubview:_pickerView];
     }
     else {
+        _pickerView.alpha = 0;
         _pickerView.hidden = NO;
     }
     _pickerView.type = PICKER_TYPE_PUSH;
     _pickerView.initialIndex = [SUIUtil indexOfNotifSetting:_myStatus.notifSetting];
+    
+    [UIView animateWithDuration:0.2f animations:^{
+        _pickerView.alpha = 1.0;
+    }];
 }
 
 
@@ -208,7 +220,12 @@
 }
 
 - (void)closeWithoutChange {
-    _pickerView.hidden = YES;
+    [UIView animateWithDuration:0.15f
+                     animations:^{
+                         _pickerView.alpha = 0.0;
+                     } completion:^(BOOL finished) {
+                         _pickerView.hidden = YES;
+                     }];
 }
 
 
