@@ -37,6 +37,25 @@
     }
 }
 
+- (BOOL)isFireNotification:(NSInteger)sign {
+    NSInteger mySettingIndex = [SUIUtil indexOfNotifSetting:self.notifSetting];
+    switch (mySettingIndex) {
+        case 0:
+            // 1位の時のみ受け取る
+            if (sign == 1) {
+                return YES;
+            }
+        case 1:
+            // 順位に関係なく受け取る
+            return YES;
+        case 2:
+            // 受け取らない
+            return NO;
+    }
+    
+    return NO;
+}
+
 - (NSString *)updateUserAst:(NSInteger)index {
     _userAst = [SUIUtil signList][index];
     

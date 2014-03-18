@@ -7,6 +7,7 @@
 //
 
 #import "SUIViewController.h"
+#import <Social/Social.h>
 #import <AFNetworking/AFNetworking.h>
 
 #import "SUIUserStatus.h"
@@ -20,7 +21,7 @@
 
 #import "SUISettingViewController.h"
 
-@interface SUIViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SUIViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) SUIUserHoro *myHoro;
@@ -61,6 +62,15 @@
     
     // TODO: 分岐
     completion(UIBackgroundFetchResultNewData);
+    
+    // 通知
+    // TODO: ちゃんと作る
+    self.myStatus = [[SUIUserStatus alloc] init];
+    [_myStatus loadUserStatus];
+    
+    if ([_myStatus isFireNotification:_myHoro.rank]) {
+        [self fireNotification];
+    }
 }
 
 // 本日の日付を返す
@@ -204,13 +214,127 @@
 }
 
 
-#pragma mark - IBAction
+- (void)fireNotification {
 
-- (IBAction)shareBtnTouched:(id)sender {
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     
+    // 日時を設定
+    localNotif.fireDate = [[NSDate date] dateByAddingTimeInterval:5];
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    
+    // 通知メッセージ
+    localNotif.alertBody = [NSString stringWithFormat:@"占いが更新されました！本日の[%@]の順位は[%d位]です！",
+                            _myHoro.sign, _myHoro.rank];
+    
+    // 効果音は標準の効果音を利用する
+    [localNotif setSoundName:UILocalNotificationDefaultSoundName];
+    
+    // 通知アラートのボタン表示名を指定
+    localNotif.alertAction = @"Open";
+    
+    // 作成した通知イベントをアプリケーションに登録
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
 }
 
 
+// 領域を指定して画像を切り抜く
+-(UIImage *)captureImage
+{
+    // 描画領域の設定
+    CGSize size = CGSizeMake(self.tableView.frame.size.width , self.tableView.frame.size.height);
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+    
+    // グラフィックスコンテキスト取得
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // コンテキストの位置を切り取り開始位置に合わせる
+    CGPoint point = self.view.frame.origin;
+    CGAffineTransform affineMoveLeftTop
+    = CGAffineTransformMakeTranslation(
+                                       -(int)point.x ,
+                                       -(int)point.y );
+    CGContextConcatCTM(context , affineMoveLeftTop );
+    
+    // viewから切り取る
+    [(CALayer*)self.view.layer renderInContext:context];
+    
+    // 切り取った内容をUIImageとして取得
+    UIImage *cnvImg = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // コンテキストの破棄
+    UIGraphicsEndImageContext();
+    
+    return cnvImg;
+}
+
+#pragma mark - IBAction
+
+- (IBAction)shareBtnTouched:(id)sender {
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"キャンセル"
+                                         destructiveButtonTitle:nil
+                                              otherButtonTitles:@"Twitterへ投稿する", @"Facebookへ投稿する", @"LINEへ投稿する", nil];
+    [sheet showInView:self.view];
+    
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    }
+    else {
+        UIImage *image = [self captureImage];
+        switch (buttonIndex) {
+            case 0:
+                // Twitterへ
+                [self postToTwitter:image];
+                break;
+            case 1:
+                // Facebookへ
+                [self postToFacebook:image];
+                break;
+            case 2:
+                // LINEへ
+                [self postToLine:image];
+                break;
+        }
+    }
+}
+
+// Twitterに投稿
+- (void)postToTwitter:(UIImage *)image {
+    SLComposeViewController *vc = [SLComposeViewController
+                                   composeViewControllerForServiceType:SLServiceTypeTwitter];
+    [vc setInitialText:@"SmartUranai"];
+    [vc addImage:image];
+    [vc addURL:[NSURL URLWithString:@"http://himaratsu.hatenablog.com/"]];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+// Facebookに投稿
+- (void)postToFacebook:(UIImage *)image {
+    SLComposeViewController *vc = [SLComposeViewController
+                                   composeViewControllerForServiceType:SLServiceTypeFacebook];
+    [vc setInitialText:@"SmartUranai"];
+    [vc addImage:image];
+    [vc addURL:[NSURL URLWithString:@"http://himaratsu.hatenablog.com/"]];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+// LINEに投稿
+- (void)postToLine:(UIImage *)image {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    [pasteboard setData:UIImagePNGRepresentation(image) forPasteboardType:@"public.png"];
+    
+    // pasteboardを使ってパスを生成
+    NSString *LineUrlString = [NSString stringWithFormat:@"line://msg/image/%@",
+                               　　　　　　　　　　　　　　　pasteboard.name];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:LineUrlString]];
+
+}
 
 #pragma mark - Status Bar
 

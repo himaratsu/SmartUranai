@@ -40,27 +40,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSLog(@"silent push!");
     
-    
-    // ---------------------------------------------
-    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    // 日時を設定
-    localNotif.fireDate = [[NSDate date] dateByAddingTimeInterval:5];
-    localNotif.timeZone = [NSTimeZone defaultTimeZone];
-    
-    // 通知メッセージ
-    localNotif.alertBody = [NSString stringWithFormat:@"占いが更新されました！今日の順位を確認しましょう！"];
-    
-    // 効果音は標準の効果音を利用する
-    [localNotif setSoundName:UILocalNotificationDefaultSoundName];
-    
-    // 通知アラートのボタン表示名を指定
-    localNotif.alertAction = @"Open";
-    
-    // 作成した通知イベントをアプリケーションに登録
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
-    // ---------------------------------------------
-    
-    
     SUIViewController *vc = ((UINavigationController *)self.window.rootViewController).viewControllers[0];
     [vc reloadContentWithCompletion:completionHandler];
 }
