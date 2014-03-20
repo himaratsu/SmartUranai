@@ -9,6 +9,7 @@
 #import "SUIViewController.h"
 #import <Social/Social.h>
 #import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 #import "SUIUserStatus.h"
 #import "SUIUserHoro.h"
@@ -24,6 +25,8 @@
 @interface SUIViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 @property (nonatomic) SUIUserHoro *myHoro;
 @property (nonatomic) SUIUserStatus *myStatus;
 
@@ -116,6 +119,15 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    
+    [self reloadTodayImage];
+}
+
+// 本日の画像を1枚選定
+- (void)reloadTodayImage {
+    srand((unsigned)time(NULL));
+    NSInteger index = rand() % 52 + 1;
+    _imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%2d.jpg", index]];
 }
 
 
@@ -304,13 +316,17 @@
     }
 }
 
+- (NSString *)stringByHoro {
+    return [NSString stringWithFormat:@"今日の%@の運勢は%d位です / Download->", _myHoro.sign, _myHoro.rank];
+}
+
 // Twitterに投稿
 - (void)postToTwitter:(UIImage *)image {
     SLComposeViewController *vc = [SLComposeViewController
                                    composeViewControllerForServiceType:SLServiceTypeTwitter];
-    [vc setInitialText:@"SmartUranai"];
+    [vc setInitialText:[self stringByHoro]];
     [vc addImage:image];
-    [vc addURL:[NSURL URLWithString:@"http://himaratsu.hatenablog.com/"]];
+    [vc addURL:[NSURL URLWithString:APP_STORE_URL]];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -318,9 +334,9 @@
 - (void)postToFacebook:(UIImage *)image {
     SLComposeViewController *vc = [SLComposeViewController
                                    composeViewControllerForServiceType:SLServiceTypeFacebook];
-    [vc setInitialText:@"SmartUranai"];
+    [vc setInitialText:[self stringByHoro]];
     [vc addImage:image];
-    [vc addURL:[NSURL URLWithString:@"http://himaratsu.hatenablog.com/"]];
+    [vc addURL:[NSURL URLWithString:APP_STORE_URL]];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
