@@ -66,6 +66,9 @@
 		2063411218DB2BBB00EF5942 /* 51.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 206340E218DB2BBB00EF5942 /* 51.jpg */; };
 		2063411318DB2BBB00EF5942 /* 52.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 206340E318DB2BBB00EF5942 /* 52.jpg */; };
 		2063411518DC086C00EF5942 /* 53.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2063411418DC086C00EF5942 /* 53.jpg */; };
+		2063411918DC956C00EF5942 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 2063411718DC956C00EF5942 /* style.css */; };
+		2063411C18DC958000EF5942 /* QARSimpleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2063411B18DC958000EF5942 /* QARSimpleWebViewController.m */; };
+		2063411F18DC9B7B00EF5942 /* license.html in Resources */ = {isa = PBXBuildFile; fileRef = 2063411E18DC9B7B00EF5942 /* license.html */; };
 		2083221B18D5615300782CA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083221A18D5615300782CA7 /* Foundation.framework */; };
 		2083221D18D5615300782CA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083221C18D5615300782CA7 /* CoreGraphics.framework */; };
 		2083221F18D5615300782CA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083221E18D5615300782CA7 /* UIKit.framework */; };
@@ -168,6 +171,10 @@
 		206340E218DB2BBB00EF5942 /* 51.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 51.jpg; sourceTree = "<group>"; };
 		206340E318DB2BBB00EF5942 /* 52.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 52.jpg; sourceTree = "<group>"; };
 		2063411418DC086C00EF5942 /* 53.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 53.jpg; sourceTree = "<group>"; };
+		2063411718DC956C00EF5942 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		2063411A18DC958000EF5942 /* QARSimpleWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QARSimpleWebViewController.h; sourceTree = "<group>"; };
+		2063411B18DC958000EF5942 /* QARSimpleWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QARSimpleWebViewController.m; sourceTree = "<group>"; };
+		2063411E18DC9B7B00EF5942 /* license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = license.html; sourceTree = "<group>"; };
 		2083221718D5615300782CA7 /* SmartUranai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartUranai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2083221A18D5615300782CA7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2083221C18D5615300782CA7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -332,6 +339,15 @@
 			name = image;
 			sourceTree = "<group>";
 		};
+		2063411D18DC958800EF5942 /* html */ = {
+			isa = PBXGroup;
+			children = (
+				2063411E18DC9B7B00EF5942 /* license.html */,
+				2063411718DC956C00EF5942 /* style.css */,
+			);
+			name = html;
+			sourceTree = "<group>";
+		};
 		2083220E18D5615300782CA7 = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +394,7 @@
 				2083222A18D5615300782CA7 /* SUIAppDelegate.m */,
 				2083222C18D5615300782CA7 /* Main.storyboard */,
 				2083224F18D561A500782CA7 /* tokyo.jpg */,
+				2063411D18DC958800EF5942 /* html */,
 				206340B318DB2BA500EF5942 /* image */,
 				2083223218D5615300782CA7 /* Images.xcassets */,
 				2083222118D5615300782CA7 /* Supporting Files */,
@@ -430,6 +447,8 @@
 				2083223018D5615300782CA7 /* SUIViewController.m */,
 				2063409618D5BBB500EF5942 /* SUISettingViewController.h */,
 				2063409718D5BBB500EF5942 /* SUISettingViewController.m */,
+				2063411A18DC958000EF5942 /* QARSimpleWebViewController.h */,
+				2063411B18DC958000EF5942 /* QARSimpleWebViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -549,6 +568,7 @@
 				206340F218DB2BBB00EF5942 /* 19.jpg in Resources */,
 				2063411318DB2BBB00EF5942 /* 52.jpg in Resources */,
 				206340FC18DB2BBB00EF5942 /* 29.jpg in Resources */,
+				2063411F18DC9B7B00EF5942 /* license.html in Resources */,
 				2083223318D5615300782CA7 /* Images.xcassets in Resources */,
 				2063411018DB2BBB00EF5942 /* 49.jpg in Resources */,
 				2083222518D5615300782CA7 /* InfoPlist.strings in Resources */,
@@ -567,6 +587,7 @@
 				2063410A18DB2BBB00EF5942 /* 43.jpg in Resources */,
 				206340FF18DB2BBB00EF5942 /* 32.jpg in Resources */,
 				2063410118DB2BBB00EF5942 /* 34.jpg in Resources */,
+				2063411918DC956C00EF5942 /* style.css in Resources */,
 				2063410618DB2BBB00EF5942 /* 39.jpg in Resources */,
 				206340E918DB2BBB00EF5942 /* 10.jpg in Resources */,
 				2063410818DB2BBB00EF5942 /* 41.jpg in Resources */,
@@ -642,6 +663,7 @@
 			files = (
 				2083225418D567ED00782CA7 /* SUITitleCell.m in Sources */,
 				2083222B18D5615300782CA7 /* SUIAppDelegate.m in Sources */,
+				2063411C18DC958000EF5942 /* QARSimpleWebViewController.m in Sources */,
 				2083226018D5684700782CA7 /* SUIMoneyCell.m in Sources */,
 				2083223118D5615300782CA7 /* SUIViewController.m in Sources */,
 				2083226818D57AD700782CA7 /* SUIUserHoro.m in Sources */,

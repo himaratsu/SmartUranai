@@ -11,6 +11,8 @@
 #import "SUIUserStatus.h"
 #import "SUIUtil.h"
 
+#import "QARSimpleWebViewController.h"
+
 @interface SUISettingViewController ()
 <UITableViewDataSource, UITableViewDelegate, SUIPickerViewDelegate>
 
@@ -25,6 +27,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 
@@ -160,6 +168,8 @@
                 break;
         }
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
@@ -235,6 +245,15 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+#pragma mark - Storyboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showSimpleWeb"]) {
+        QARSimpleWebViewController *webVC = (QARSimpleWebViewController *)segue.destinationViewController;
+        webVC.loadFilePath = @"license.html";
+    }
+}
 
 #pragma mark - Status Bar
 

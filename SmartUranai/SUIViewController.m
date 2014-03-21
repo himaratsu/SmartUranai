@@ -394,7 +394,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"Setting"]) {
-        SUISettingViewController *settingVC = (SUISettingViewController *)segue.destinationViewController;
+        UINavigationController *nav = (UINavigationController *)segue.destinationViewController;
+        SUISettingViewController *settingVC = (SUISettingViewController *)nav.viewControllers[0];
         settingVC.myStatus = _myStatus;
     }
 }
