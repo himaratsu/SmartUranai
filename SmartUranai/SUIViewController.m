@@ -26,6 +26,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *controlView;
+
 
 @property (nonatomic) SUIUserHoro *myHoro;
 @property (nonatomic) SUIUserStatus *myStatus;
@@ -126,8 +128,8 @@
 // 本日の画像を1枚選定
 - (void)reloadTodayImage {
     srand((unsigned)time(NULL));
-    NSInteger index = rand() % 52 + 1;
-    _imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%2d.jpg", index]];
+    NSInteger index = rand() % 53 + 1;
+    _imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%02d.jpg", index]];
 }
 
 
@@ -253,8 +255,14 @@
 -(UIImage *)captureImage
 {
     // 描画領域の設定
-    CGSize size = CGSizeMake(self.tableView.frame.size.width , self.tableView.frame.size.height);
+    // FIXME: 15 is magic number for cut under gray space.
+    CGSize size = CGSizeMake(self.tableView.contentSize.width, self.tableView.contentSize.height - 15);
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.0);
+    
+    // SSに不要な部分は隠す, スクロールを一時的に無効化する
+    _controlView.hidden = YES;
+    CGPoint offset = _tableView.contentOffset;
+    _tableView.contentOffset = CGPointMake(0, 0);
     
     // グラフィックスコンテキスト取得
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -275,6 +283,10 @@
     
     // コンテキストの破棄
     UIGraphicsEndImageContext();
+    
+    // 隠していた部分を戻す
+    _controlView.hidden = NO;
+    _tableView.contentOffset = offset;
     
     return cnvImg;
 }
@@ -317,7 +329,8 @@
 }
 
 - (NSString *)stringByHoro {
-    return [NSString stringWithFormat:@"今日の%@の運勢は%d位です / Download->", _myHoro.sign, _myHoro.rank];
+//    return [NSString stringWithFormat:@"今日の%@の運勢は%d位です / Download->", _myHoro.sign, _myHoro.rank];
+    return [NSString stringWithFormat:@"今日の%@の運勢は%d位です", _myHoro.sign, _myHoro.rank];
 }
 
 // Twitterに投稿
@@ -326,7 +339,7 @@
                                    composeViewControllerForServiceType:SLServiceTypeTwitter];
     [vc setInitialText:[self stringByHoro]];
     [vc addImage:image];
-    [vc addURL:[NSURL URLWithString:APP_STORE_URL]];
+//    [vc addURL:[NSURL URLWithString:APP_STORE_URL]];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -336,7 +349,7 @@
                                    composeViewControllerForServiceType:SLServiceTypeFacebook];
     [vc setInitialText:[self stringByHoro]];
     [vc addImage:image];
-    [vc addURL:[NSURL URLWithString:APP_STORE_URL]];
+//    [vc addURL:[NSURL URLWithString:APP_STORE_URL]];
     [self presentViewController:vc animated:YES completion:nil];
 }
 
