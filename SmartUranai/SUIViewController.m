@@ -28,10 +28,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *controlView;
 
-
 @property (nonatomic) SUIUserHoro *myHoro;
 @property (nonatomic) SUIUserStatus *myStatus;
 
+@property (nonatomic) NSString *currentDateStr;
+@property (nonatomic) NSString *currentSignStr;
 
 @end
 
@@ -89,13 +90,25 @@
     return formattedDateString;
 }
 
+- (BOOL)shouldReload:(NSString *)todayStr {
+    if ([_currentDateStr isEqualToString:todayStr]
+        && [_currentSignStr isEqualToString:_myStatus.userAst]) {
+        return NO;
+    }
+    return YES;
+}
+
 - (void)reload {
     NSString *todayStr = [self todayStr];
-    
+
     // ユーザーの星座情報を取得
     // TODO: ちゃんと作る
     self.myStatus = [[SUIUserStatus alloc] init];
     [_myStatus loadUserStatus];
+    
+    if (![self shouldReload:todayStr]) {
+        return;
+    }
 
     // リクエストURLを生成
     NSString *requestUrl = [NSString stringWithFormat:@"http://api.jugemkey.jp/api/horoscope/free/%@", todayStr];
@@ -189,6 +202,9 @@
         cell.dateLabel.text = _myHoro.date;
         cell.signLabel.text = _myHoro.sign;
         cell.rankLabel.text = [NSString stringWithFormat:@"%d", _myHoro.rank];
+        
+        _currentDateStr = _myHoro.date;
+        _currentSignStr = _myHoro.sign;
         return cell;
     }
     else if (indexPath.section == 1) {
