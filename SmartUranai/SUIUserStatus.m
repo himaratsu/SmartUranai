@@ -45,6 +45,9 @@
             if (sign == 1) {
                 return YES;
             }
+            else {
+                return NO;
+            }
         case 1:
             // 順位に関係なく受け取る
             return YES;

@@ -13,6 +13,7 @@
 
 #import "SUIUserStatus.h"
 #import "SUIUserHoro.h"
+#import "SUIPickerView.h"
 
 #import "SUITitleCell.h"
 #import "SUIContentCell.h"
@@ -20,9 +21,13 @@
 #import "SUIJobCell.h"
 #import "SUIMoneyCell.h"
 
+#import "SUIUtil.h"
+
 #import "SUISettingViewController.h"
 
-@interface SUIViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+@interface SUIViewController ()
+<UITableViewDataSource, UITableViewDelegate,
+UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -30,6 +35,7 @@
 
 @property (nonatomic) SUIUserHoro *myHoro;
 @property (nonatomic) SUIUserStatus *myStatus;
+@property (nonatomic) SUIPickerView *pickerView;
 
 @property (nonatomic) NSString *currentDateStr;
 @property (nonatomic) NSString *currentSignStr;
@@ -42,6 +48,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // 初期の場合はチュートリアルを表示
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL isTutorialDone = [defaults boolForKey:@"TUTORIAL_DONE"];
+    if (!isTutorialDone) {
+        // チュートリアルを表示
+        [self showHelloWorld];
+    }
 
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.contentInset = (UIEdgeInsets){
@@ -59,6 +73,16 @@
     
     // コンテンツを更新
     [self reload];
+}
+
+
+- (void)showHelloWorld {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"ようこそSmartUranaiへ！"
+                                                    message:@"ダウンロードありがとうございます。\nまず最初にあなたの星座を設定しましょう！"
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"設定する", nil];
+    [alert show];
 }
 
 #pragma mark - FetchContent
@@ -317,6 +341,42 @@
                                               otherButtonTitles:@"Twitterへ投稿する", @"Facebookへ投稿する", @"LINEへ投稿する", nil];
     [sheet showInView:self.view];
     
+}
+
+
+#pragma mark - UIAlertView
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self showSignPicker];
+}
+
+- (void)showSignPicker {
+    self.pickerView = [SUIPickerView loadFromIdiomNib];
+    _pickerView.myDelegate = self;
+    _pickerView.alpha = 0;
+    _pickerView.type = PICKER_TYPE_SIGN;
+    _pickerView.cancelBtn.hidden = YES;
+    
+    [self.view addSubview:_pickerView];
+    
+    [UIView animateWithDuration:0.2f animations:^{
+        _pickerView.alpha = 1.0;
+    }];
+}
+
+
+#pragma mark - SUIPickerViewDelegate
+
+- (void)changeValueSubmit:(NSInteger)index type:(PICKER_TYPE)type {
+    if (type == PICKER_TYPE_SIGN) {
+        [_myStatus updateUserAst:index];
+        [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+    _pickerView.hidden = YES;
+    
+    [self reload];
 }
 
 #pragma mark - UIActionSheetDelegate

@@ -98,6 +98,11 @@
 }
 
 - (void)backLayerTouched {
+    // キャンセルボタンが非表示の場合、backLayerタップによるキャンセルを禁止
+    if (_cancelBtn.hidden == YES) {
+        return;
+    }
+    
     if ([_myDelegate respondsToSelector:@selector(closeWithoutChange)]) {
         [_myDelegate closeWithoutChange];
     }

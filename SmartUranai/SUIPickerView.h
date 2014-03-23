@@ -29,6 +29,7 @@ typedef enum : NSUInteger {
 @property (nonatomic) NSArray *dataList;
 @property (nonatomic, assign) PICKER_TYPE type;
 @property (nonatomic, assign) NSInteger initialIndex;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 
 @property (nonatomic, weak) id<SUIPickerViewDelegate> myDelegate;
 
