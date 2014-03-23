@@ -69,6 +69,7 @@
 		2063411918DC956C00EF5942 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 2063411718DC956C00EF5942 /* style.css */; };
 		2063411C18DC958000EF5942 /* QARSimpleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2063411B18DC958000EF5942 /* QARSimpleWebViewController.m */; };
 		2063411F18DC9B7B00EF5942 /* license.html in Resources */ = {isa = PBXBuildFile; fileRef = 2063411E18DC9B7B00EF5942 /* license.html */; };
+		2063412118DF130600EF5942 /* howtouse.html in Resources */ = {isa = PBXBuildFile; fileRef = 2063412018DF130600EF5942 /* howtouse.html */; };
 		2083221B18D5615300782CA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083221A18D5615300782CA7 /* Foundation.framework */; };
 		2083221D18D5615300782CA7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083221C18D5615300782CA7 /* CoreGraphics.framework */; };
 		2083221F18D5615300782CA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083221E18D5615300782CA7 /* UIKit.framework */; };
@@ -175,6 +176,7 @@
 		2063411A18DC958000EF5942 /* QARSimpleWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QARSimpleWebViewController.h; sourceTree = "<group>"; };
 		2063411B18DC958000EF5942 /* QARSimpleWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QARSimpleWebViewController.m; sourceTree = "<group>"; };
 		2063411E18DC9B7B00EF5942 /* license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = license.html; sourceTree = "<group>"; };
+		2063412018DF130600EF5942 /* howtouse.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = howtouse.html; sourceTree = "<group>"; };
 		2083221718D5615300782CA7 /* SmartUranai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartUranai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2083221A18D5615300782CA7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2083221C18D5615300782CA7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -343,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				2063411E18DC9B7B00EF5942 /* license.html */,
+				2063412018DF130600EF5942 /* howtouse.html */,
 				2063411718DC956C00EF5942 /* style.css */,
 			);
 			name = html;
@@ -586,6 +589,7 @@
 				2063410518DB2BBB00EF5942 /* 38.jpg in Resources */,
 				2063410A18DB2BBB00EF5942 /* 43.jpg in Resources */,
 				206340FF18DB2BBB00EF5942 /* 32.jpg in Resources */,
+				2063412118DF130600EF5942 /* howtouse.html in Resources */,
 				2063410118DB2BBB00EF5942 /* 34.jpg in Resources */,
 				2063411918DC956C00EF5942 /* style.css in Resources */,
 				2063410618DB2BBB00EF5942 /* 39.jpg in Resources */,
@@ -838,6 +842,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: RYOSUKE HIRAMATSU (Y6LHTNYSDM)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/himara2/Documents/objc/SmartUranai,
@@ -857,6 +862,7 @@
 					"-Objc",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "AC3081AF-0535-4D16-BB26-437718DC0EE1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -14,7 +14,8 @@
 #import "QARSimpleWebViewController.h"
 
 @interface SUISettingViewController ()
-<UITableViewDataSource, UITableViewDelegate, SUIPickerViewDelegate>
+<UITableViewDataSource, UITableViewDelegate,
+UIActionSheetDelegate, SUIPickerViewDelegate>
 
 @property (nonatomic) SUIPickerView *pickerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -149,13 +150,29 @@
             case 1:
             {
                 // レビューcell
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APP_STORE_URL]];
+                UIActionSheet *sheet = [[UIActionSheet alloc]
+                                        initWithTitle:@"この先は別アプリで開きます。よろしいですか？"
+                                        delegate:self
+                                        cancelButtonTitle:@"キャンセル"
+                                        destructiveButtonTitle:nil
+                                        otherButtonTitles:@"AppStoreを開く", nil];
+                sheet.tag = 1;
+                [sheet showInView:self.view];
+                
                 break;
             }
             case 2:
             {
                 // お問い合わせcell
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SUPPORT_URL]];
+                UIActionSheet *sheet = [[UIActionSheet alloc]
+                                        initWithTitle:@"この先は別アプリで開きます。よろしいですか？"
+                                        delegate:self
+                                        cancelButtonTitle:@"キャンセル"
+                                        destructiveButtonTitle:nil
+                                        otherButtonTitles:@"Safariで開く", nil];
+                sheet.tag = 2;
+                [sheet showInView:self.view];
+
                 break;
             }
             case 3:
@@ -249,9 +266,15 @@
 #pragma mark - Storyboard
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showSimpleWeb"]) {
+    if ([segue.identifier isEqualToString:@"showHowTo"]) {
+        QARSimpleWebViewController *webVC = (QARSimpleWebViewController *)segue.destinationViewController;
+        webVC.loadFilePath = @"howtouse.html";
+        webVC.title = @"使い方";
+    }
+    else if ([segue.identifier isEqualToString:@"showLicense"]) {
         QARSimpleWebViewController *webVC = (QARSimpleWebViewController *)segue.destinationViewController;
         webVC.loadFilePath = @"license.html";
+        webVC.title = @"ソフトウェアガイドライン";
     }
 }
 
@@ -262,6 +285,23 @@
 {
     return YES;
 }
+
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (actionSheet.tag == 1) {
+        if (buttonIndex != actionSheet.cancelButtonIndex) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:APP_STORE_URL]];
+        }
+    }
+    else if (actionSheet.tag == 2) {
+        if (buttonIndex != actionSheet.cancelButtonIndex) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:SUPPORT_URL]];
+        }
+    }
+}
+
 
 
 

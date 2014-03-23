@@ -22,8 +22,9 @@
 
     NSString *path = [[NSBundle mainBundle] pathForResource:_loadFilePath ofType:nil];
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
-//    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://yahoo.co.jp"]];
     [_webView loadRequest:req];
+    
+    self.view.backgroundColor = _webView.backgroundColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
     
     [self.navigationController setNavigationBarHidden:NO];
 }
