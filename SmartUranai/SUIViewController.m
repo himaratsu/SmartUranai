@@ -360,7 +360,7 @@ SUIPickerViewDelegate, SUIContentCellDelegate>
 }
 
 
-#pragma mark - UIAlertView
+#pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     [self showSignPicker];
@@ -389,6 +389,11 @@ SUIPickerViewDelegate, SUIContentCellDelegate>
     }
     
     _pickerView.hidden = YES;
+    
+    // チュートリアル終了フラグを立てる
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:@"TUTORIAL_DONE"];
+    [defaults synchronize];
     
     [self reload];
 }
