@@ -9,9 +9,7 @@
 #ifndef SmartUranai_Const_h
 #define SmartUranai_Const_h
 
-
 #define APP_STORE_URL   @"https://itunes.apple.com/app/id841983885&mt=8"
 #define SUPPORT_URL     @"https://twitter.com/himara2"
-
 
 #endif

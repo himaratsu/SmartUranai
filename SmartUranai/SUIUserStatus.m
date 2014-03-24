@@ -11,18 +11,22 @@
 
 @implementation SUIUserStatus
 
-- (id)initWithAst:(NSString *)userAst notifSetting:(NSString *)notifSetting {
++ (id)sharedInstance {
+    static dispatch_once_t once;
+    static id sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (id)init {
     if (self = [super init]) {
-        _userAst = userAst;
-        _notifSetting = notifSetting;
+        // initialize
+        [self loadUserStatus];
     }
     
     return self;
-}
-
-+ (id)sampleStatus {
-    // dummy
-    return [[SUIUserStatus alloc] initWithAst:@"牡羊座" notifSetting:@"1位の時のみ受け取る"];
 }
 
 - (void)loadUserStatus {
@@ -31,6 +35,7 @@
         self.userAst = @"牡羊座";
     }
     
+    // Defaults
     self.notifSetting = [[NSUserDefaults standardUserDefaults] objectForKey:@"NOTIF_SETTING"];
     if (_notifSetting == nil) {
         self.notifSetting = @"1位の時のみ受け取る";
@@ -80,3 +85,4 @@
 }
 
 @end
+

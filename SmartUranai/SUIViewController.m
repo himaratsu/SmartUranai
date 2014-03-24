@@ -88,17 +88,19 @@ UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
 #pragma mark - FetchContent
 
 - (void)reloadContentWithCompletion:(void (^)(UIBackgroundFetchResult))completion {
-    [self reload];
-    
-    // TODO: 分岐
-    completion(UIBackgroundFetchResultNewData);
+    if ([self reload]) {
+        // 更新された
+        completion(UIBackgroundFetchResultNewData);
+    }
+    else {
+        // 更新されなかった
+        completion(UIBackgroundFetchResultNoData);
+        return;
+    }
     
     // 通知
-    // TODO: ちゃんと作る
-    self.myStatus = [[SUIUserStatus alloc] init];
-    [_myStatus loadUserStatus];
-    
-    if ([_myStatus isFireNotification:_myHoro.rank]) {
+    self.myStatus = [SUIUserStatus sharedInstance];
+    if (_myHoro && [_myStatus isFireNotification:_myHoro.rank]) {
         [self fireNotification];
     }
 }
@@ -122,16 +124,14 @@ UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
     return YES;
 }
 
-- (void)reload {
+- (BOOL)reload {
     NSString *todayStr = [self todayStr];
 
     // ユーザーの星座情報を取得
-    // TODO: ちゃんと作る
-    self.myStatus = [[SUIUserStatus alloc] init];
-    [_myStatus loadUserStatus];
+    self.myStatus = [SUIUserStatus sharedInstance];
     
     if (![self shouldReload:todayStr]) {
-        return;
+        return NO;
     }
 
     // リクエストURLを生成
@@ -160,6 +160,8 @@ UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
     }];
     
     [self reloadTodayImage];
+    
+    return YES;
 }
 
 // 本日の画像を1枚選定

@@ -94,6 +94,7 @@
 		2083226818D57AD700782CA7 /* SUIUserHoro.m in Sources */ = {isa = PBXBuildFile; fileRef = 2083226718D57AD700782CA7 /* SUIUserHoro.m */; };
 		2083226A18D58FDC00782CA7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2083226918D58FDC00782CA7 /* Parse.framework */; };
 		D2DEBF69A4D74475AE6002E6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3CC80A3FDB543FEA372617A /* libPods.a */; };
+		D994378918DFBCAC00804E58 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D994378818DFBCAC00804E58 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +214,7 @@
 		2083226718D57AD700782CA7 /* SUIUserHoro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUIUserHoro.m; sourceTree = "<group>"; };
 		2083226918D58FDC00782CA7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		218219059DC64B9F81CE7844 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		D994378818DFBCAC00804E58 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E3CC80A3FDB543FEA372617A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -225,6 +227,7 @@
 				2083221F18D5615300782CA7 /* UIKit.framework in Frameworks */,
 				2083221B18D5615300782CA7 /* Foundation.framework in Frameworks */,
 				D2DEBF69A4D74475AE6002E6 /* libPods.a in Frameworks */,
+				D994378918DFBCAC00804E58 /* Parse.framework in Frameworks */,
 				2083226A18D58FDC00782CA7 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +377,7 @@
 		2083221918D5615300782CA7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D994378818DFBCAC00804E58 /* Parse.framework */,
 				2083221A18D5615300782CA7 /* Foundation.framework */,
 				2083221C18D5615300782CA7 /* CoreGraphics.framework */,
 				2083221E18D5615300782CA7 /* UIKit.framework */,
@@ -814,6 +818,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/himara2/Documents/objc/SmartUranai,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartUranai/SmartUranai-Prefix.pch";
@@ -846,6 +851,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/himara2/Documents/objc/SmartUranai,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartUranai/SmartUranai-Prefix.pch";

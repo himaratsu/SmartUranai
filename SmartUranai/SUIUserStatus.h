@@ -13,8 +13,7 @@
 @property (nonatomic, strong) NSString* userAst;        // 登録星座
 @property (nonatomic, strong) NSString* notifSetting;   // 通知設定
 
-+ (id)sampleStatus;
-- (id)initWithAst:(NSString *)userAst notifSetting:(NSString *)notifSetting;
++ (id)sharedInstance;
 - (void)loadUserStatus;
 - (BOOL)isFireNotification:(NSInteger)sign;
 - (NSString *)updateUserAst:(NSInteger)index;
