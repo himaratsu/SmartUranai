@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SUIContentCellDelegate <NSObject>
+
+- (void)didChangeSelectionString:(NSString *)str;
+
+@end
+
+
 @interface SUIContentCell : UITableViewCell
 
 @property (nonatomic) NSString *content;
+@property (nonatomic, assign) id<SUIContentCellDelegate> delegate;
+
+- (void)resetStringSelection;
 
 @end

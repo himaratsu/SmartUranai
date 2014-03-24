@@ -27,7 +27,8 @@
 
 @interface SUIViewController ()
 <UITableViewDataSource, UITableViewDelegate,
-UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
+UIActionSheetDelegate, UIAlertViewDelegate,
+SUIPickerViewDelegate, SUIContentCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -39,6 +40,10 @@ UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
 
 @property (nonatomic) NSString *currentDateStr;
 @property (nonatomic) NSString *currentSignStr;
+
+@property (nonatomic) NSString *selectionString;
+
+@property (nonatomic) SUIContentCell *currentContentCell;
 
 @end
 
@@ -262,6 +267,10 @@ UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
         cellIdentifier = @"ContentCell";
         SUIContentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         cell.content = _myHoro.content;
+        cell.delegate = self;
+        
+        self.currentContentCell = cell;
+        
         return cell;
     }
     
@@ -305,6 +314,11 @@ UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
     _controlView.hidden = YES;
     CGPoint offset = _tableView.contentOffset;
     _tableView.contentOffset = CGPointMake(0, 0);
+    
+    // 文字選択を解除する
+    if (_currentContentCell) {
+        [_currentContentCell resetStringSelection];
+    }
     
     // グラフィックスコンテキスト取得
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -372,13 +386,19 @@ UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
 - (void)changeValueSubmit:(NSInteger)index type:(PICKER_TYPE)type {
     if (type == PICKER_TYPE_SIGN) {
         [_myStatus updateUserAst:index];
-        [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]
-                          withRowAnimation:UITableViewRowAnimationNone];
     }
     
     _pickerView.hidden = YES;
     
     [self reload];
+}
+
+
+#pragma mark - SUIContentCellDelegate
+
+- (void)didChangeSelectionString:(NSString *)str {
+    // 選択文字列を記憶
+    self.selectionString = str;
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -407,8 +427,14 @@ UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
 }
 
 - (NSString *)stringByHoro {
-//    return [NSString stringWithFormat:@"今日の%@の運勢は%d位です / Download->", _myHoro.sign, _myHoro.rank];
-    return [NSString stringWithFormat:@"今日の%@の運勢は%d位です", _myHoro.sign, _myHoro.rank];
+    if (_selectionString && ![_selectionString isEqualToString:@""]) {
+        return [NSString stringWithFormat:@"\"%@\" 今日の%@の運勢は%d位です / Download->",
+                _selectionString, _myHoro.sign, _myHoro.rank];
+    }
+    else {
+        return [NSString stringWithFormat:@"今日の%@の運勢は%d位です / Download->", _myHoro.sign, _myHoro.rank];
+    }
+//    return [NSString stringWithFormat:@"今日の%@の運勢は%d位です", _myHoro.sign, _myHoro.rank];
 }
 
 // Twitterに投稿
@@ -417,8 +443,10 @@ UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
                                    composeViewControllerForServiceType:SLServiceTypeTwitter];
     [vc setInitialText:[self stringByHoro]];
     [vc addImage:image];
-//    [vc addURL:[NSURL URLWithString:APP_STORE_URL]];
-    [self presentViewController:vc animated:YES completion:nil];
+    [vc addURL:[NSURL URLWithString:APP_STORE_URL]];
+    [self presentViewController:vc animated:YES completion:^{
+        self.selectionString = @"";
+    }];
 }
 
 // Facebookに投稿
@@ -427,8 +455,10 @@ UIActionSheetDelegate, UIAlertViewDelegate, SUIPickerViewDelegate>
                                    composeViewControllerForServiceType:SLServiceTypeFacebook];
     [vc setInitialText:[self stringByHoro]];
     [vc addImage:image];
-//    [vc addURL:[NSURL URLWithString:APP_STORE_URL]];
-    [self presentViewController:vc animated:YES completion:nil];
+    [vc addURL:[NSURL URLWithString:APP_STORE_URL]];
+    [self presentViewController:vc animated:YES completion:^{
+        self.selectionString = @"";
+    }];
 }
 
 // LINEに投稿
