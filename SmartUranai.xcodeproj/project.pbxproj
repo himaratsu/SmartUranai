@@ -522,6 +522,7 @@
 				ORGANIZATIONNAME = himara2;
 				TargetAttributes = {
 					2083221618D5615300782CA7 = {
+						DevelopmentTeam = Y6LHTNYSDM;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -813,7 +814,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: RYOSUKE HIRAMATSU (CX83Y44847)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: RYOSUKE HIRAMATSU (CX83Y44847)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -835,7 +836,7 @@
 					"-Objc",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "694FC3C6-12D6-47EE-A00A-1DD65111D97A";
+				PROVISIONING_PROFILE = "92B248DC-A175-4D96-A9F9-0BCC7DB63662";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -847,7 +848,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: RYOSUKE HIRAMATSU (Y6LHTNYSDM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/himara2/Documents/objc/SmartUranai,
